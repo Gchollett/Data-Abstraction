@@ -1,0 +1,32 @@
+pointers point to an address
+&name gives the address of a variable
+*name declares a pointers
+*name also gets the value
+int number[5] = {1,2,3,4,5}; // common array
+cout << number << endl; // gives address
+cout << *number << endl; gives // first number
+cout << *(++number) << endl; // gives second number
+if pointer is increased by one it points to the next element
+if decreased, it points to the previous
+
+ex:
+int num[5] = {1,2,3,4,5};
+int *p = num;
+cout << *(p++) << endl; // prints 1
+cout << *(++p) << endl; // prints 3
+cout << ++*p << endl; // prints 4
+cout << (*p)++ << endl; // prints 3
+
+void == no return type
+void pointers usually applies to function return type
+
+null pointer is value that points to "nowhere"
+int *p = NULL;
+
+pass by reference is preferred
+
+"free store" / "the heap"
+double *j = new double(1.2); // value initialized
+delete j;
+int *v = new int[n];
+delete []v;
