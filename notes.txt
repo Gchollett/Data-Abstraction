@@ -30,3 +30,36 @@ double *j = new double(1.2); // value initialized
 delete j;
 int *v = new int[n];
 delete []v;
+
+VECTOR
+vectors are placed in contiguous memory
+vectors are arrays that can change size // think of a list
+insert/delete is at the end of a vector
+you can use iterators
+vector<int> v1 = {1,2,3,4,5}; // initialize vector
+vector<int> v2(5,12); // {12,12,12,12,12}
+v1.push_back(6); //  adds integer 6 to end of vector
+v1.pop_back(); // deletes last element
+v1.at(4) = 9; // change the element at index 4 to 9
+v1.front; // returns first element
+v1.back; // returns last element
+
+STACK
+An ordered list of similar data types
+Last one in, first one out (LIFO/FILO)
+Push adds element to stack
+Pop removes element from stack
+cannot change the internal elements
+peek looks at the top elemet without removing it
+isFull/isEmpty check exactly that
+Overflow: pushing a new element to a full stack
+Underflow: Popping from an empty stack
+
+QUEUE
+linear and ordered list of similar items
+first on in, first one out (FIFO)
+engueue adds element to front
+dequeue removes element from rear
+cannot change the internal elements
+front/back can peek the front and back respectively
+isFull/isEmpty exactly just that
