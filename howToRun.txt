@@ -1,0 +1,3 @@
+How to run code
+- Type in the line "g++ -std=c++11 FILENAME.cpp -o yoyo" into your turminal
+- Then type "./yoyo"

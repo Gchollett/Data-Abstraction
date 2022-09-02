@@ -62,4 +62,28 @@ engueue adds element to front
 dequeue removes element from rear
 cannot change the internal elements
 front/back can peek the front and back respectively
-isFull/isEmpty exactly just that
+isFull/isEmpty check exactly that
+
+TEMPLATE
+Is a blueprint for creating a generic class or function
+Passes in data types as a parameter into a function so there is no need to write the same for differenet data types
+It enables the compiler to write the specific code to execute during run time based on the rules
+Templates are only expended at compiling time
+Examples: max(), min(), print(), etc.
+Basic syntax for function template:
+    template<typename T>
+    Function_type Function_name(T parameter_name){...}
+Example:
+    template<typename T>
+    void Print(T value){
+        cout << value << endl;
+    }
+This Print function can take in any data type
+Class template is a class type that is independent of the data type
+Can be used to achieve polymorphism
+Examples: array, linked list, vector, stack, queue, etc.
+Basic syntax for class template:
+    template<typename T, Parameter_Type Parameter_Name> class 
+    Class_Name{...}
+Templates is best used with the combination of inheritance
+There is no definitive answer to when to use a template
