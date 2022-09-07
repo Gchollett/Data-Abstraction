@@ -31,59 +31,129 @@ delete j;
 int *v = new int[n];
 delete []v;
 
-VECTOR
-vectors are placed in contiguous memory
-vectors are arrays that can change size // think of a list
-insert/delete is at the end of a vector
-you can use iterators
-vector<int> v1 = {1,2,3,4,5}; // initialize vector
-vector<int> v2(5,12); // {12,12,12,12,12}
-v1.push_back(6); //  adds integer 6 to end of vector
-v1.pop_back(); // deletes last element
-v1.at(4) = 9; // change the element at index 4 to 9
-v1.front; // returns first element
-v1.back; // returns last element
+Vector
+    vectors are placed in contiguous memory
+    vectors are arrays that can change size // think of a list
+    insert/delete is at the end of a vector
+    you can use iterators
+    vector<int> v1 = {1,2,3,4,5}; // initialize vector
+    vector<int> v2(5,12); // {12,12,12,12,12}
+    v1.push_back(6); //  adds integer 6 to end of vector
+    v1.pop_back(); // deletes last element
+    v1.at(4) = 9; // change the element at index 4 to 9
+    v1.front; // returns first element
+    v1.back; // returns last element
 
-STACK
-An ordered list of similar data types
-Last one in, first one out (LIFO/FILO)
-Push adds element to stack
-Pop removes element from stack
-cannot change the internal elements
-peek looks at the top elemet without removing it
-isFull/isEmpty check exactly that
-Overflow: pushing a new element to a full stack
-Underflow: Popping from an empty stack
+Stack
+    An ordered list of similar data types
+    Last one in, first one out (LIFO/FILO)
+    Push adds element to stack
+    Pop removes element from stack
+    cannot change the internal elements
+    peek looks at the top elemet without removing it
+    isFull/isEmpty check exactly that
+    Overflow: pushing a new element to a full stack
+    Underflow: Popping from an empty stack
 
-QUEUE
-linear and ordered list of similar items
-first on in, first one out (FIFO)
-engueue adds element to front
-dequeue removes element from rear
-cannot change the internal elements
-front/back can peek the front and back respectively
-isFull/isEmpty check exactly that
+Queue
+    linear and ordered list of similar items
+    first on in, first one out (FIFO)
+    engueue adds element to front
+    dequeue removes element from rear
+    cannot change the internal elements
+    front/back can peek the front and back respectively
+    isFull/isEmpty check exactly that
 
-TEMPLATE
-Is a blueprint for creating a generic class or function
-Passes in data types as a parameter into a function so there is no need to write the same for differenet data types
-It enables the compiler to write the specific code to execute during run time based on the rules
-Templates are only expended at compiling time
-Examples: max(), min(), print(), etc.
-Basic syntax for function template:
-    template<typename T>
-    Function_type Function_name(T parameter_name){...}
-Example:
-    template<typename T>
-    void Print(T value){
-        cout << value << endl;
-    }
-This Print function can take in any data type
-Class template is a class type that is independent of the data type
-Can be used to achieve polymorphism
-Examples: array, linked list, vector, stack, queue, etc.
-Basic syntax for class template:
-    template<typename T, Parameter_Type Parameter_Name> class 
-    Class_Name{...}
-Templates is best used with the combination of inheritance
-There is no definitive answer to when to use a template
+Template
+    Is a blueprint for creating a generic class or function
+    Passes in data types as a parameter into a function so there is no need to write the same for differenet data types
+    It enables the compiler to write the specific code to execute during run time based on the rules
+    Templates are only expended at compiling time
+    Examples: max(), min(), print(), etc.
+    Basic syntax for function template:
+        template<typename T>
+        Function_type Function_name(T parameter_name){...}
+    Example:
+        template<typename T>
+        void Print(T value){
+            cout << value << endl;
+        }
+    This Print function can take in any data type
+    Class template is a class type that is independent of the data type
+    Can be used to achieve polymorphism
+    Examples: array, linked list, vector, stack, queue, etc.
+    Basic syntax for class template:
+        template<typename T, Parameter_Type Parameter_Name> class 
+        Class_Name{...}
+    Templates is best used with the combination of inheritance
+    There is no definitive answer to when to use a template
+
+Structures
+    A structure creates a data type that can be used to group items of possibly different types into a single type
+    the decloration of structures forms a template and the variables of structures are known as members
+    Example:
+        struct Point {
+            double x;
+            double y;
+        };
+
+Classes
+    a class is the blueprint for a data type or object
+    it defines the data component the object consist of and what operations can be performed on such object
+    Member functions are functions that have their definitions within the class definition
+    It operates on any object of the class
+    You can also define the same function outside the class using the scope resolution operators (::)
+    It is recommended to us it when you write your class
+    Example:
+        class Box{
+            double length; // this is private because it was not stated otherwise
+            double height;
+            double breadth;
+            double getVolume(){}
+        };
+        double Box::getVolume(){
+            return lengeth*breadth*height
+        };
+
+Class Access Modifiers
+    1. public: member variable/function is accessible from anywhere outside the class but within the program
+    2. private: member variable/function cannot be accessed outside (this is the default)
+    3. protected: member variable/function is accessible by the children
+
+Friend Function
+    A friend function of a class is defined outside the class's scope
+    It has the right to access all private and protected members of the class
+    It can be a function, member function or class where the entire class and all of its members are friends
+    Example:
+        friend void printBoxLength(Box box){
+            cout << box.length << endl;
+        };
+
+This Pointer
+    This pointer has access to its address within the member function
+    It is an implicit parameter to member functions and it can be used to refer to the object itself when needed
+    Example;
+        bool compare(Box box){
+            return this->Volume() > box.Volume() // compares this boxes volume to another boxes volume
+        };
+
+Constuctor
+    A special member function that is executed whenever the new object is created
+    Constuctor will have the same name as the class and no return type (not void), it can take parameters
+    It is usually used to set initial values for certain member variables
+    Example:
+        Box(){cout << "This box is created" << endl;};
+
+Destructor
+    A special member fucntion that is executed the object is out of scope or the delete expression is applied to a point to the object
+    Same name as the class with a (~), no return type and cannot take parameters
+    It is usually used to release resources (memory space)
+    Example:
+        ~Box(){cout << "A box is deleted!" << endl;};
+
+Copy Constuctor
+    Creates an object by initializing it with an object of the same class that has been created previously
+    It is used to avoid problems when the variable/function member is a pointer
+    The default constuctor does only shallow copies, but user-defined copy constructor can do deep copies
+    General Syntax:
+        classname(const classname &object)
