@@ -100,7 +100,7 @@ Structures
 Classes
     a class is the blueprint for a data type or object
     it defines the data component the object consist of and what operations can be performed on such object
-    Member functions are functions that have their definitions within the class definition
+    Member functions - functions that have their definitions within the class definition
     It operates on any object of the class
     You can also define the same function outside the class using the scope resolution operators (::)
     It is recommended to us it when you write your class
@@ -151,9 +151,30 @@ Destructor
     Example:
         ~Box(){cout << "A box is deleted!" << endl;};
 
-Copy Constuctor
+Copy Constructor
     Creates an object by initializing it with an object of the same class that has been created previously
     It is used to avoid problems when the variable/function member is a pointer
     The default constuctor does only shallow copies, but user-defined copy constructor can do deep copies
     General Syntax:
-        classname(const classname &object)
+        classname(const classname &object){body of constructor}
+
+Static Member
+    when we declare a member of the class static, there is only one copy of that static member no matter how many object of that class are created
+    A static is shared by all objects of that class
+
+Inheritance
+    Allow us to define a class in terms of another class
+    A new class can inherit the members of an existing class
+    General syntax:
+        class baseclass{...}
+        class subclass: access_mode baseclass{...}
+    Three inheritance mode: public, private, and protected
+
+Virtual Function and Abstract Class
+    A virtual function has no definition
+    An abstract class has at least one pure virtual function
+    An abstract class type object cannot be created, however you can use pointer to reference it
+    You can add const 
+
+Polymorphism
+    In general, it means a call to a member to a function will cause
