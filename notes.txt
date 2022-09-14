@@ -178,3 +178,31 @@ Virtual Function and Abstract Class
 
 Polymorphism
     In general, it means a call to a member to a function will cause
+
+ADT
+    A set of objects an associated set of operations on those objects
+    It supports abstraction, encapsulation and information hiding which enhances representational independence
+    It provides equal attention to data and operations
+
+Built-in ADTs
+    Boolean
+        values: true or false
+        operations: and, or, not, etc.
+    Integer
+        Values: whole numbers between MaxValue and MinValue
+        Operations: add, subtract, multiply, divide, etc.
+
+User-defined ADTs
+    Stack
+        Values: stack elements, size, top
+        Operations: initialize, push, pop, isEmpty/isFull, size, etc.
+    Queue  
+        Values: queue elements, size, front, back
+        Operations: initialize
+
+Goal of ADTs
+    A complete, precise, and unambiguous description and specifications of data type
+    Do not want to be dependant on actual representation
+        Too difficult to port 
+        Too difficult to change implementation
+    Capture essential properties without over-specifying their internal realizations
