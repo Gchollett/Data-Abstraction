@@ -235,8 +235,24 @@ rvalue and lvalue
     lvalue is something that points to a specific memory location
     rvalue is something that doesn't point to anywhere
     Example:
-        Int a = 3 // a is and lvalue because it is stored in memory and 3 is an rvalue because once it's used it exists no Modifiers
+        Int a = 3 // a is an lvalue because it is stored in memory and 3 is an rvalue because once it's used it exists no Modifiers
     rvalue is temporary and short lived
     lvalue usually has a name and exists as a variable
     Assignment operation requires lvalue as its left operand and an rvalue as its right
     Can be useful when you are doing operator overload or function overload
+
+Move and Move Constructor
+    It moves an object rather than copy it
+    Instead of making a deep copy like copy constructor, it moves resources on the heap
+    It is optional for implementation. If you do not provide it, then the copy constructor will be called
+    Move constructor only takes rvalues
+    class Move{
+        private:
+            int *data;
+        public:
+            Move(const Move &src)
+    }
+    Use it when you are dealing with a fairly big object
+    Use it when you are dealing with rvalue object copy
+    Usually, it is implemented with customized constructor, copy constructor, destructor
+    Be aware, when you are using move semantics, the rvalue passed in will be transferred
