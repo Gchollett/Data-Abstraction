@@ -5,11 +5,11 @@
 using namespace std;
 
 
-/*template<typename T>
+template<typename T>
 void PrintVector(const Vector<T>& vector){
     for(int i = 0; i < vector.Size(); i++)
         cout << vector[i] << endl; 
-}*/
+}
 
 int main()
 {
@@ -25,7 +25,7 @@ int main()
     cout<< v.Size() << endl;
 	cout<< v.Capacity() << endl;
 
-    //PrintVector(v);
+    PrintVector(v);
     
     return 0;
     
