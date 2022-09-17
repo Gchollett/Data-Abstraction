@@ -4,7 +4,7 @@
 #include<vector>
 #include<deque>
 #include<cstdlib>
-//#include<time.h>
+#include<time.h>
 #include "ArrayStack.h"
 #include "ArrayQueue.h"
 
