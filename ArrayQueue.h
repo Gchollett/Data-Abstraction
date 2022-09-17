@@ -19,6 +19,7 @@ class ArrayQueue: public Queue<T>{
             }
         }
         ~ArrayQueue() {delete[] data;}
+        
         void enqueue(const T &t) {
             if(size >= capacity){
                 ReAlloc(capacity * 2);
