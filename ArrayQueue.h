@@ -31,6 +31,7 @@ class ArrayQueue: public Queue<T>{
         }
         T dequeue() {
             if(size != 0){
+                if(head >= capacity) head = 0;
                 T ret = data[head];
                 head = (head + 1) % capacity;
                 size--;
