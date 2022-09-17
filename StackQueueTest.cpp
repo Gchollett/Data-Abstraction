@@ -178,27 +178,22 @@ int main(int argc,char **argv) {
 		cout << "Failed queue at 10." << endl;
 		return 2;
 	}
-	cout << "passed 10 on queue" << endl;
 	if(!testIntQueue(10000)) {
 		cout << "Failed queue at 10000." << endl;
 		return 2;
 	}
-	cout << "passed 10000 on queue" << endl;
 	if(!testIntQueue(10000000)) {
 		cout << "Failed queue at 10000000." << endl;
 		return 2;
 	}
-	cout << "passed 10000000 on queue" << endl;
 	if(!testStringQueue(10)) {
 		cout << "Failed string queue at 10." << endl;
 		return 2;
 	}
-	cout << "passed 10 on queue" << endl;
 	if(!testStringQueue(10000)) {
 		cout << "Failed string queue at 10000." << endl;
 		return 2;
 	}
-	cout << "passed 10000 on queue" << endl;
 
 	ArrayStack<int> as1;
 	as1.push(1);
@@ -210,17 +205,15 @@ int main(int argc,char **argv) {
 		cout << "Failed copy test 1." << endl;
 		return 2;
 	}
-	cout << "passed copy test 1" << endl;
 	as2.push(99);
 	if(as1.pop()!=4) {
 		cout << "Failed copy test 2." << endl;
 		return 2;
 	}
-	cout << "passed copy test 2" << endl;
 	
 
-	out << (clock()-start)/CLOCKS_PER_SEC << endl;
-	out.close();
+	cout << (clock()-start)/CLOCKS_PER_SEC << endl;
+	//out.close();
 	cout << "Done timing." << endl;
 
 	cout << "Tests passed." << endl;

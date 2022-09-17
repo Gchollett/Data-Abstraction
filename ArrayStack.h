@@ -29,9 +29,14 @@ class ArrayStack: public Stack<T> {
             //cout << "size " << size << endl;
         }
         T pop() {
-            T ret = data[size-1];
-            size--;
-            return ret;
+            if(size != 0){
+                T ret = data[size-1];
+                size--;
+                return ret;
+            } else {
+                cout << "Stack Undreflow" << endl;
+                return 0;
+            }
         }
         T peek() const {return data[size-1];}
         bool isEmpty() const {return size == 0;}

@@ -23,15 +23,21 @@ class ArrayQueue: public Queue<T>{
             if(size >= capacity){
                 ReAlloc(capacity * 2);
             }
-            if(head > 0) data[capacity - size] = t;
+            if(head >= capacity) head = 0;
+            if(head > 0) data[(size + head)%capacity] = t;
             else data[size] = t;
             size++;
         }
         T dequeue() {
-            T ret = data[head];
-            head = (head + 1) % capacity;
-            size--;
-            return ret;
+            if(size != 0){
+                T ret = data[head];
+                head = (head + 1) % capacity;
+                size--;
+                return ret;
+            } else {
+                cout << "Queue Underflow" << endl;
+                return 0;
+            }
         }
         T peek() const {return data[head];}
         bool isEmpty() const {return size == 0;}
@@ -41,13 +47,13 @@ class ArrayQueue: public Queue<T>{
             if(newCapacity < size)
                 size = newCapacity;
             
-            if(head > 0){
+            if(head == 0){
                 for(int i = 0; i < size; i++)
                     newBlock[i] = data[i];
             }
             else {
-                for(int i = head; i < size; i++)
-                    newBlock[i%size] = data[i%size];
+                for(int i = 0; i < size; i++)
+                    newBlock[i] = data[(i+head)%size];
             }
             delete[] data;
             data = newBlock;
