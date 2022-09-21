@@ -9,7 +9,7 @@ class ArrayStack: public Stack<T> {
         int size = 0;
         int capacity = 0;
     public:
-        ArrayStack() {ReAlloc(5);}
+        ArrayStack() {ReAlloc(100);}
         ArrayStack(const ArrayStack &object){
             data = new T[object.capacity];
             capacity = object.capacity;
