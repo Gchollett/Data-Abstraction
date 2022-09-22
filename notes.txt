@@ -256,3 +256,58 @@ Move and Move Constructor
     Use it when you are dealing with rvalue object copy
     Usually, it is implemented with customized constructor, copy constructor, destructor
     Be aware, when you are using move semantics, the rvalue passed in will be transferred
+
+Standard Template Library (std)
+    A set of template classes to provide common data structures and functions
+    It is a generalized library and its components are parameterized
+    Every std is built using Templates
+    it has fout key components:
+        Functions
+        Algorithms
+        Containers
+        iterators
+    Function is a general-purpose polymorphic function wrapper
+
+Algorithms
+    It defines a collection of fucntions specifically designed to be used on a range of elements
+    Ex: Sorting, Searching, Partition, Reverse, Max/Min, etc.
+    It can be divided into two categories:
+        Non-manipulating
+        Manipulating
+
+Containers
+    It defines a collection of objects of the same type (the elements)
+    Container owns the element: creation and destruction is controlled by Container
+    Ex: Vector, List, Array, Set, Map (Unordered Map), Queue, Stack, etc.
+    It can be divided into three categories:
+        Sequence container
+        Associative container
+        Container adaptors
+
+std Iterator
+    A pointer like object can point at the memory address of any container type(e.g., array, vector, etc.) or self-defined ADTs
+    Operators using the iterator:
+        begin
+        end
+        advance
+        next
+        previous
+        inserter
+    STL container and supported iterator
+        Vector - Random-Access
+        List - Bidirectional
+        Map - Bidirectional
+        Set - Bidirectional
+    Template makes algorithm independent of the ADT
+    Iterators make algorithms independent of the containers
+    An iterator is an object that can navigate over elements of ADT containers
+    Each iterator represents a certain position in the container
+    it can also provide access to those elements to modify their values
+    Advantages:
+        Code efficiency
+        Dynamic processing
+        Self-defined ADT can only traverse using iterator
+    Disadvantage
+        Can not easily go back
+        Can not do update while traversing
+
