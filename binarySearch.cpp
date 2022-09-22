@@ -3,28 +3,20 @@
 using namespace std;
 
 bool binary_search(vector<int> v, int x){
-    bool isFound = false;
-    bool isDone = false;
-    int curr = v.size()/2;
-    while(!isFound && !isDone){
-        if(x == v[curr]) {
-            isFound = true;
-        }else{
-            if(x < v[curr]){
-                 if(curr != 0) curr /= 2;
-                 else isDone = true;
-            }
-            else {
-                if(curr != v.size()-1) curr += curr/2;
-                else isDone = true;
-            }
-        }
+    int high = v.size()-1;
+    int low = 0;
+    int mid;
+    while(low <= high){
+        mid = (high + low)/2;
+        if(v[mid] == x) return true;
+        if(x < v[mid]) high = mid - 1;
+        else low = mid + 1;
     }
-    return isFound;
+    return false;
 }
 
 int main() {
-    vector<int> v = {1,2,3,4,5,7,9,10};
+    vector<int> v = {1,2,3,4,5,6,7,8,9};
     int x;
     cin >> x;
     if(binary_search(v,x)){
