@@ -356,3 +356,26 @@ List
         reverse()
         merge()
 
+Linked List
+    A linked list is a linear data structure that stores a collection of data elements dynamically
+    For each element in the linked list, it is called a node which consists of data elements and links/pointers connecting to another node
+    The last node's link/pointer points to null
+    Different types of linked lists:
+        Single Linked List
+        Double Linked List
+        Circular Linked List
+    Basic Operations   
+        Traversal
+        Insertion
+        Deletion
+        Search
+    Advantage
+        Dynamic Size in nature
+        Ease of insertion/deletion
+        Memory efficiency
+        Foundation for various data structures implementation(stack, queue, graph)
+    Disadvantage
+        Memory usage
+        Random access
+        Reverse order traverser(single linked list)
+        
