@@ -311,3 +311,48 @@ std Iterator
         Can not easily go back
         Can not do update while traversing
 
+Iterator vs Pointer
+    Pointers holds a memory address
+    Iterator usually holds a pointer along with something much more Complex
+    Pointer can do simple arithmetic like increment, decrement, add an integer
+    Iterator can allow certain arithmetic if it is defined
+    Iterator is strictly associate with a specific container
+    Pointer can be deleted to free up space
+    There is no concept of deletion
+
+Iterator (types)
+    Input Iterator
+    Output Iterator
+    Forward Iterator
+    Bidirectional Iterator
+    Random-Access Iterator
+
+Iterator vs Constant Iterator
+    Both are objects similar to pointers which are used to iterate over a collection or manipulate the container elements
+    A const_iterator can point to elements but can not modify th element, it is used to access only
+    If the code that uses const_iterator tries to modify the value of the element, it will generate an error
+    In general, use constant iterator (in std) whenever it is possible to avoid unwanted data modification
+
+Typedef
+    It is used to assigne a new name to any existing data-type
+    Syntax:
+        typedef current_name new_name;
+    Example:
+        typedef unsigned int size_t;
+
+List
+    A sequential set of elements
+    It allows you to insert and move items from anywhere
+    It is implemented using double-linked list in C++
+    Common list functions in std:
+        insert()
+        remove()
+        push_back()
+        push_front()
+        pop_front()
+        size()
+        front()
+        back()
+        reverse()
+        merge()
+
