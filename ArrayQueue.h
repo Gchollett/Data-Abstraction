@@ -8,7 +8,7 @@ class ArrayQueue: public Queue<T>{
         int capacity = 0;
         int head = 0;
     public:
-        ArrayQueue() {ReAlloc(100);}
+        ArrayQueue() {ReAlloc(10);}
         ArrayQueue(const ArrayQueue &object){
             data = new T[object.capacity];
             capacity = object.capacity;
