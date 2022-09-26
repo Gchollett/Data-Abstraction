@@ -377,5 +377,5 @@ Linked List
     Disadvantage
         Memory usage
         Random access
-        Reverse order traverser(single linked list)
-        
+        Reverse order traversal(single linked list)
+
