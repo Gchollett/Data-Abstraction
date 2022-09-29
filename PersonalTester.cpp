@@ -29,6 +29,13 @@ int main() {
         t.pop_back();
     }
     cout << "Array size: " << t.size() << endl;
+
+    for(int i = 0; i<10; i++){
+        t[i] = 9-i;
+    }
+    for(int i = 0; i<10; i++){
+        cout << t[i] << endl;
+    }
     // ArrayQueue<int> t;
     // for(int i = 0; i < 10; i++){
     //     t.enqueue(i);

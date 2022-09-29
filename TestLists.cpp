@@ -3,6 +3,7 @@
 #include<string>
 #include<vector>
 #include<cstdlib>
+#include<time.h>
 #include "ArrayList.h"
 
 using std::ofstream;
@@ -84,6 +85,7 @@ bool simpleTest(T &lst1) {
 	if(lst1[1]!=5) { cout << "After remove lst1[1]." << endl; return false; }
 	if(lst1[2]!=7) { cout << "After remove lst1[2]." << endl; return false; }
 	if(lst1[3]!=8) { cout << "After remove lst1[3]." << endl; return false; }
+
 	if(lst2[0]!=4) { cout << "After remove lst2[0]." << endl; return false; }
 	if(lst2[1]!=5) { cout << "After remove lst2[1]." << endl; return false; }
 	if(lst2[2]!=99) { cout << "After remove lst2[2]." << endl; return false; }
