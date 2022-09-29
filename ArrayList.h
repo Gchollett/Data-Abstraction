@@ -48,6 +48,7 @@ class ArrayList {
             for(int i = index; i < sz-1; i++){
                 data[i] = data[i+1];
             }
+            sz--;
         }
 
         class iterator {
@@ -123,9 +124,9 @@ class ArrayList {
         iterator begin() {return iterator(data);}
         const_iterator begin() const {return const_iterator(data);}
         iterator end() {return iterator(data + sz);}
-        const_iterator end() const {return const_iterator(data+sz);}
+        const_iterator end() const {return const_iterator(data + sz);}
         const_iterator cbegin() const {return const_iterator(data);}
-        const_iterator cend() const {return const_iterator(data+sz);}
+        const_iterator cend() const {return const_iterator(data + sz);}
 
         void ReAlloc(int newCapacity) {
                     T* newBlock = new T[newCapacity];

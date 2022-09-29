@@ -199,7 +199,7 @@ int main(int argc,char **argv) {
 		return 2;
 	}
 	cout << "Passed big 1 set." << endl;
-	for(int i = 1; i<al3.size(); ++i) {
+	for(int i = 1; i < al3.size(); ++i) {
 		al3.remove(i);
 		v3.erase(v3.begin()+i);
 	}
@@ -227,8 +227,8 @@ int main(int argc,char **argv) {
 		return 2;
 	}
 
-	out << (clock()-start)/CLOCKS_PER_SEC << endl;
-	out.close();
+	cout << (clock()-start)/CLOCKS_PER_SEC << endl;
+	//out.close();
 	cout << "Done timing." << endl;
 
 	cout << "Tests passed." << endl;
