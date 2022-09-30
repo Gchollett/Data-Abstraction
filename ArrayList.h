@@ -84,43 +84,9 @@ class ArrayList {
                     this-> pointer--;
                     return temp;
                 }
-        };
+        };        
 
-        class const_iterator {
-            private:
-                T* pointer;
-            public:
-                const_iterator(T *i) {pointer = i;};
-                const_iterator() {pointer = nullptr;}
-                const_iterator(const const_iterator &other){pointer = other.pointer;}
-                T &operator*() const {return *pointer;}
-                T* operator->() const {return pointer;}
-                bool operator==(const const_iterator &other) const {return pointer == other.pointer;}
-                bool operator!=(const const_iterator &other) const {return pointer != other.pointer;}
-                const_iterator &operator=(const const_iterator &other){
-                    pointer(other.pointer);
-                    return *this;
-                }
-                const_iterator &operator++(){
-                    this->pointer++;
-                    return *this;
-                }
-                const_iterator &operator--(){
-                    this->pointer--;
-                    return *this;
-                }
-                const_iterator operator++(int){
-                    const_iterator temp = *this;
-                    this-> pointer++;
-                    return temp;
-                }
-                const_iterator operator--(int){
-                    const_iterator temp = *this;
-                    this-> pointer--;
-                    return temp;
-                }
-        };
-
+        typedef iterator const_iterator;
         iterator begin() {return iterator(data);}
         const_iterator begin() const {return const_iterator(data);}
         iterator end() {return iterator(data + sz);}
