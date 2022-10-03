@@ -379,3 +379,52 @@ Linked List
         Random access
         Reverse order traversal(single linked list)
 
+Files vs Memory
+    So far, everything we've done are in memory
+    Redis vs Postgres
+    Read and write performance
+    
+File Modes
+    Text File
+        Data stored in the form of ASCII characters
+        Organized using lines, each line is seperated by newline character '/n'
+        Usually human readable
+    Binary File 
+        Data types stored in the form of bytes of the Binary
+        Same way the data is stored in the memory
+        Almost rarely human readable
+    In order to use it, should include them into the source code
+
+File Streams
+    Access to file data in C++ is through file Streams
+    A stream is an abstraction that represents a device on which operations of input and output are performed
+    It can be viewed as a source or destination of data of indefinite length depending on its usage
+    Three categories of classes of file streams:
+        ofstream // output, used for writing
+        ifstream // input, used for reading
+        fstream // both input and output
+    In order to use it, should include them into the source code
+
+File Operations in C++
+    Create/open the file (open) in various Modes
+        ios::in
+        ios::out
+        ios::app
+        ios::ate
+        ios::binary
+        ios::trunc
+    Read the data from file (read)
+    write the data to file (write)
+    Close the file (close)
+
+C File I/O Performance
+    C vs C++ vs C#
+    C is using FILE object to have access to I/O streams
+    FILE *fptr;
+    It is more efficient when we need to move around the file instead of just loading everything into memory
+
+File Operations in C
+    fopen
+        pts = fopen(file_name, mode);
+    freopen
+        pts = freopen(file_name, mode, os_stream);
