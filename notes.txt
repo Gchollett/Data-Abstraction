@@ -428,3 +428,37 @@ File Operations in C
         pts = fopen(file_name, mode);
     freopen
         pts = freopen(file_name, mode, os_stream);
+    fclose
+        fclose(ptr);
+    fflush
+        fflush(of_stream);
+    fread
+        fread(buffer_ptr,size_each_object,numberofobject,ptr);
+    fwrite
+        fwrite(buffer_ptr,size_each_object,numberofobject,ptr);
+
+fopen Modes
+    "r" read
+    "w" write
+    "a" append
+    "r+" read/update
+    "w+" write/update
+    "a+" append/update
+    "b" binary
+
+Positioning
+    Position
+        Each FILE pointer has a "current" position in the stream
+        It is used to read/write to a specific place in file
+        when we work on reading/writing/appending data to files, the position needs to be handled manually
+    ftell
+        Return the current file position indicator
+    fgetpos
+        Get the file position indicator
+    fseek
+        Moves the file position indicator to a specific location in the file
+    fsetpos
+        Does the same thing as fseek with differenet parameter
+    rewind
+        Moves the file position indicator to the beginning of the file
+
