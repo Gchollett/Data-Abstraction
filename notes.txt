@@ -462,3 +462,23 @@ Positioning
     rewind
         Moves the file position indicator to the beginning of the file
 
+Seek Constants
+    SEEK_SET
+        Argument to fseek() indicating seeking from the beginning of the file
+    SEEK_CUR
+        Argument to fseek() indicating seeking from the current file position
+    SEEK_END
+        Argument to fseek() indicating seeking from the end of the file
+
+fwrite
+    size_t fwrite(const void* ptr, size_t size, size_t count, FILE* stream)
+    ptr
+        Pointer to the array of elements to be written, will be converted into a const void* type
+    size
+        Size in bytes of each element to be written
+    count
+        Number of elements to be written, each one with a size of 'size' bytes
+    stream
+        Pointer to a FILE object that specifies an output stream
+    It will return the number of elements successfully read from the file
+
