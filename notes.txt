@@ -481,4 +481,3 @@ fwrite
     stream
         Pointer to a FILE object that specifies an output stream
     It will return the number of elements successfully read from the file
-
