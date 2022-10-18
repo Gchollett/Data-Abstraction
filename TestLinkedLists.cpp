@@ -172,6 +172,7 @@ int main(int argc,char **argv) {
 		return 2;
 	}
 	ll1 = returnLittleLL();
+	cout << ll1[0] << ll1[1] << endl;
 	if(ll1[0]!=1 || ll1[1]!=2 || ll1[2]!=3) {
 		cout << "Failed return by value-assign LinkedList." << endl;
 		return 2;
@@ -236,7 +237,7 @@ int main(int argc,char **argv) {
 		return 2;
 	}
 
-	out << (clock()-start)/CLOCKS_PER_SEC << endl;
+	cout << (clock()-start)/CLOCKS_PER_SEC << endl;
 	out.close();
 	cout << "Done timing." << endl;
 

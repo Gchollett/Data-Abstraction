@@ -10,12 +10,16 @@ class LinkedList{
 
     private:
         Node *sentinal = new Node;
-        unsigned int sz;
+        unsigned int sz = 0;
 
     public:
-        LinkedList() {clear();}
-        LinkedList(const LinkedList & l) : sz(l.sz) {
-            clear();
+        LinkedList() {
+            sentinal->next = sentinal;
+            sentinal->prev = sentinal;
+        }
+        LinkedList(const LinkedList & l) {
+            sentinal->next = sentinal;
+            sentinal->prev = sentinal;
             for(iterator it = l.begin(); it != l.end(); it++){
                 push_back(*it);
             }
@@ -24,6 +28,15 @@ class LinkedList{
             clear();
             delete sentinal;
         }
+
+        LinkedList &operator=(const LinkedList &l){
+            sentinal->next = sentinal;
+            sentinal->prev = sentinal;
+            for(iterator it = l.begin(); it != l.end(); it++){
+                push_back(*it);
+            }
+            return *this;
+        }
         class iterator{
             private:
                 Node* ptr;
@@ -31,10 +44,9 @@ class LinkedList{
                 iterator() : ptr(nullptr) {}
                 iterator(Node *p) : ptr(p) {}
                 iterator(const iterator &src) : ptr(src.ptr) {}
-                ~iterator() {delete ptr;}
                 T &operator*() {return ptr->data;}
-                bool operator==(const iterator &it) {return ptr==it.ptr;}
-                bool operator!=(const iterator &it) {return ptr!=it.ptr;}
+                bool operator==(const iterator &it) {return ptr == it.ptr;}
+                bool operator!=(const iterator &it) {return ptr != it.ptr;}
                 iterator &operator=(const iterator &src) {
                     ptr = src.ptr;
                     return *this;
@@ -120,7 +132,7 @@ class LinkedList{
                 pos.ptr->prev->next = pos.ptr->next;
                 --sz;
             }
-            return --pos;
+            return ++pos;
         }
         iterator begin() {return iterator(sentinal->next);}
         iterator end() {return iterator(sentinal);}
