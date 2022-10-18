@@ -21,11 +21,7 @@ class LinkedList{
             }
         }
         ~LinkedList() {
-            while (sentinal->next != sentinal){
-                Node * temp = sentinal->next;
-                sentinal->next = sentinal->next->next;
-                delete temp;
-            }
+            clear();
             delete sentinal;
         }
         class iterator{
@@ -81,6 +77,11 @@ class LinkedList{
         int size() const {return sz;}
 
         void clear() {
+            while (sentinal->next != sentinal){
+                Node * temp = sentinal->next;
+                sentinal->next = sentinal->next->next;
+                delete temp;
+            }
             sentinal->next = sentinal->prev = sentinal;
             sz = 0;
         }
