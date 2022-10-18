@@ -4,6 +4,8 @@ class LinkedList{
         T data;
         Node *next;
         Node *prev;
+        Node() : next(nullptr), prev(nullptr) {}
+        Node(T t, Node *n, Node *p) : data(t),next(n),prev(p) {}
     };
 
     private:
@@ -18,7 +20,14 @@ class LinkedList{
                 push_back(*it);
             }
         }
-        ~LinkedList() {delete sentinal;}
+        ~LinkedList() {
+            while (sentinal->next != sentinal){
+                Node * temp = sentinal->next;
+                sentinal->next = sentinal->next->next;
+                delete temp;
+            }
+            delete sentinal;
+        }
         class iterator{
             private:
                 Node* ptr;
@@ -72,15 +81,11 @@ class LinkedList{
         int size() const {return sz;}
 
         void clear() {
-            sentinal->next = sentinal;
-            sentinal->prev = sentinal;
+            sentinal->next = sentinal->prev = sentinal;
             sz = 0;
         }
         iterator insert(iterator pos,const T &t){
-            Node *n = new Node;
-            n->data = t;
-            n->next = pos.ptr;
-            n->prev = pos.ptr->prev;
+            Node *n = new Node(t,pos.ptr,pos.ptr->prev);
             pos.ptr->prev->next = n;
             pos.ptr->prev = n;
             sz++;
@@ -107,7 +112,7 @@ class LinkedList{
         }
         iterator erase(iterator pos){
             if (pos == sentinal) return ++pos;
-            if(pos == --end()){
+            if (pos == --end()){
                 pop_back();
             } else {
                 pos.ptr->next->prev = pos.ptr->prev;
