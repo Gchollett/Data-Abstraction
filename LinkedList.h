@@ -106,22 +106,42 @@ class LinkedList{
             return pos;
         }
         const T &operator[](int index) const {
-            iterator i = begin();
-            int cnt = 0;
-            while(cnt < index){
-                i++;
-                cnt++;
+            if(index < sz/2){
+                iterator i = begin();
+                int cnt = 0;
+                while(cnt < index){
+                    i++;
+                    cnt++;
+                }
+                return *i;
+            } else {
+                iterator i = --end();
+                int cnt = sz-1;
+                while(cnt > index){
+                    i--;
+                    cnt--;
+                }
+                return *i;
             }
-            return *i;
         }
         T &operator[](int index) {
-            iterator i = begin();
-            int cnt = 0;
-            while(cnt < index){
-                i++;
-                cnt++;
+           if(index < sz/2){
+                iterator i = begin();
+                int cnt = 0;
+                while(cnt < index){
+                    i++;
+                    cnt++;
+                }
+                return *i;
+            } else {
+                iterator i = --end();
+                int cnt = sz-1;
+                while(cnt > index){
+                    i--;
+                    cnt--;
+                }
+                return *i;
             }
-            return *i;
         }
         iterator erase(iterator pos){
             if (pos == sentinal) return ++pos;
