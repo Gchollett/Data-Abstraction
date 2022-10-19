@@ -115,7 +115,7 @@ class LinkedList{
                 }
                 return *i;
             } else {
-                iterator i = --end();
+                iterator i = end();
                 int cnt = sz-1;
                 while(cnt > index){
                     i--;
