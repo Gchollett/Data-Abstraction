@@ -7,7 +7,7 @@ void findSymPairs(int arr[][2], int row)
    unordered_map<int,int> check;
    for(int i = 0; i < row; i++){
         if(check.find(arr[i][1]) != check.end()) cout << "(" << arr[i][0] << "," << arr[i][1] << ")" << endl;
-        else check[arr[i][0]] = *arr[i][1];
+        else check[arr[i][0]] = arr[i][1];
    }
 }
  
