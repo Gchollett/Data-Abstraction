@@ -6,7 +6,7 @@ void findSymPairs(int arr[][2], int row)
 {
    unordered_map<int,int> check;
    for(int i = 0; i < row; i++){
-        if(check.find(arr[i][1]) != check.end()) cout << "(" << arr[i][0] << "," << arr[i][1] << ")" << endl;
+        if(check.find(arr[i][1]) != check.end() && check.at(arr[i][1]) == arr[i][0]) cout << "(" << arr[i][0] << "," << arr[i][1] << ")" << endl;
         else check[arr[i][0]] = arr[i][1];
    }
 }
@@ -23,7 +23,7 @@ int main()
     arr[2][1] = 10;
     arr[3][0] = 40;
     arr[3][1] = 30;
-    arr[4][0] = 10;
+    arr[4][0] = 11;
     arr[4][1] = 5;
     cout << "Following pairs have symmetric pairs\n";
     findSymPairs(arr, 5);
