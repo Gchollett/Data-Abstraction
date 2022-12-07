@@ -31,9 +31,7 @@ public:
 				subIter = mainIter->begin();
 			}
 		}
-		iterator(const decltype(mainIter) mi,
-				const decltype(mainEnd) me,
-				const decltype(subIter) si):
+		iterator(const decltype(mainIter) mi, const decltype(mainEnd) me, const decltype(subIter) si):
 				mainIter(mi),mainEnd(me),subIter(si) {}
 
 		bool operator==(const iterator &i) const { return mainIter==i.mainIter && (mainIter==mainEnd || subIter==i.subIter); }
@@ -52,6 +50,7 @@ public:
 			++(*this);
 			return tmp;
 		}
+		friend class HashMap;
 	};
 
 	class const_iterator {
@@ -89,6 +88,7 @@ public:
 			++(*this);
 			return tmp;
 		}
+		friend class HashMap;
 	};
 
 	HashMap(const Hash &hf):hashFunction(hf),table(11),numElems(0) {}
@@ -109,7 +109,7 @@ public:
 	template <class InputIterator>
     void insert(InputIterator first, InputIterator last) {
 		for(auto iter = first; iter!=last; ++iter) {
-			K key = iter->first;
+			K key = (*iter).first;
 			int hc = hashFunction(key);
 			int bin = hc % table.size();
 			auto iter2 = find_if(table[bin].begin(),table[bin].end(),[&key] (const std::pair<K,V> &p) { return p.first==key; });
@@ -150,80 +150,114 @@ private:
 
 template <class K, class V, class Hash>
 bool HashMap<K,V,Hash>::operator==(const HashMap<K,V,Hash>& rhs) const {
-	for(auto it1 = begin(); auto it2 = rhs.begin(); it1 != end(); it1++; it2++){
-		if(*it1 != *it2) return false;
+	if(numElems != rhs.numElems) return false;
+	for(auto x:*this){
+		K key = x.first;
+		int hc = hashFunction(key);
+		int bin = hc % rhs.table.size();
+		auto iter = find_if(rhs.table[bin].begin(),rhs.table[bin].end(),[&x] (const std::pair<K,V> &p) { return p.first==x.first; });
+		if(iter == rhs.table[bin].end() || iter->second != x.second) return false;
 	}
 	return true;
 }
 
 template <class K, class V, class Hash>
 bool HashMap<K,V,Hash>::operator!=(const HashMap<K,V,Hash>& rhs) const {
-	bool ret = true;
-	for(auto it1 = begin(); auto it2 = rhs.begin(); it1 != end(); it1++; it2++){
-		ret = *it1 == *it2 && ret;
-	}
-	return !ret;
+	return !(*this==rhs);
 }
 
 template<typename K,typename V,typename Hash>
 typename HashMap<K,V,Hash>::iterator HashMap<K,V,Hash>::find(const K& key) {
-	auto it = begin();
-	while(it != end && *it.first() != key) it++;
-	return it;
+	int hc = hashFunction(key);
+	int bin = hc % table.size();
+	auto iter = find_if(table[bin].begin(),table[bin].end(),[&key] (const std::pair<K,V> &p) { return p.first==key; });
+	if(iter == table[bin].end())return end();
+	return iterator(table.begin()+bin,table.end(),iter);
 }
 
 template<typename K,typename V,typename Hash>
 typename HashMap<K,V,Hash>::const_iterator HashMap<K,V,Hash>::find(const K& key) const {
-	auto it = cbegin();
-	while(it != end && *it.first() != key) it++;
-	return it;
+	int hc = hashFunction(key);
+	int bin = hc % table.size();
+	auto iter = find_if(table[bin].begin(),table[bin].end(),[&key] (const std::pair<K,V> &p) { return p.first==key; });
+	if(iter == table[bin].end()) return cend();
+	return const_iterator(table.cbegin()+bin,table.cend(),iter);
 }
 
 template<typename K,typename V,typename Hash>
 int HashMap<K,V,Hash>::count(const key_type& key) const {
-	int ret = 0;
-	for(auto x:this) {if (x.first() == key) {ret++;}}
-	return ret;
+	int hc = hashFunction(key);
+	int bin = hc % table.size();
+	auto iter = find_if(table[bin].begin(),table[bin].end(),[&key] (const std::pair<K,V> &p) { return p.first==key; });
+	if(iter == table[bin].end()) return 0;
+	return 1;
 }
 
 template<typename K,typename V,typename Hash>
 std::pair<typename HashMap<K,V,Hash>::iterator,bool> HashMap<K,V,Hash>::insert(const value_type& val) {
 		int hc = hashFunction(val.first);
 		int bin = hc % table.size();
-		++numElems;
-		table[bin].push_back(val);
+		K key = val.first;
+		auto iter = find_if(table[bin].begin(),table[bin].end(),[&key] (const std::pair<K,V> &p) { return p.first==key; });
+		if(iter==table[bin].end()) {
+			// if(numElems > table.size()/2){
+			// 	growTableAndRehash();
+			// 	bin = hc % table.size();
+			// }
+			++numElems;
+			table[bin].push_back(val);
+			return std::make_pair(iterator(table.begin()+bin,table.end(),--table[bin].end()),true);
+		} else {
+			return std::make_pair(iterator(table.begin()+bin,table.end(),iter),false);
+		}
 }
 
 template<typename K,typename V,typename Hash>
 typename HashMap<K,V,Hash>::iterator HashMap<K,V,Hash>::erase(const_iterator position) {
-	*position.mainIter.erase(position.subIter);
+	if(position==cend()) return end();
+	K key = (*position).first;
+	int hc = hashFunction(key);
+	int bin = hc % table.size();
+	auto iter = find_if(table[bin].begin(),table[bin].end(),[&key] (const std::pair<K,V> &p) { return p.first==key; });
+	table[bin].erase(iter);
+	numElems--;
+	return ++iterator(table.begin()+bin,table.end(),iter);
 }
 
 template<typename K,typename V,typename Hash>
 int HashMap<K,V,Hash>::erase(const K& key) {
-	auto iter = find(key);
-	erase(iter);
+	int hc = hashFunction(key);
+	int bin = hc % table.size();
+	auto iter = find_if(table[bin].begin(),table[bin].end(),[&key] (const std::pair<K,V> &p) { return p.first==key; });
+	if(iter == table[bin].end()) return 0;
+	table[bin].erase(iter);
+	numElems--;
+	return 1;
 }
 
 template<typename K,typename V,typename Hash>
 void HashMap<K,V,Hash>::clear() {
-	for(auto x:table){
-		for(auto y:x){
-			x.erase(y);
-		}
-	}
+	for(auto &x:table) x.erase(x.begin(),x.end());
+	numElems = 0;
 }
 
 template<typename K,typename V,typename Hash>
 typename HashMap<K,V,Hash>::mapped_type &HashMap<K,V,Hash>::operator[](const K &key) {
-	return *find(key);
+	int hc = hashFunction(key);
+	int bin = hc % table.size();
+	auto iter = find_if(table[bin].begin(),table[bin].end(),[&key] (const std::pair<K,V> &p) { return p.first==key; });
+	if(iter == table[bin].end()){
+		insert(std::make_pair(key,V()));
+		return table[bin].back().second;
+	}
+	return iter->second;
 }
 
 template<typename K,typename V,typename Hash>
 void HashMap<K,V,Hash>::growTableAndRehash() {
-	HashMap<K,V,Hash> newHashMap(this->hashFunction,table.size*2);
-	for(x:this) newHashMap.insert(x);
-	this = newHashMap;
+	HashMap<K,V,Hash> newHashMap(this->hashFunction,table.size()*2);
+	newHashMap.insert(begin(),end());
+	*this = newHashMap;
 }
 
 

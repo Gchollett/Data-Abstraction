@@ -5,6 +5,7 @@
 #include<cstdlib>
 #include<cstring>
 #include<functional>
+#include<time.h>
 #include<utility>
 #include<unordered_map>
 #include "HashMap.h"
@@ -77,7 +78,7 @@ int doTests() {
 
 	hash[5] = "five";
 	if(hash.empty()) {
-		cout << "Empty after []." << endl;
+		cout << "Empty after [] 1." << endl;
 		return 2;
 	}
 	if(hash.size()!=1) {
@@ -128,10 +129,11 @@ int doTests() {
 		cout << "Size not zero after clear." << endl;
 		return 2;
 	}
-
 	hash[16] = "six-teen";
+	cout << hash[16] << endl;
+	cout << hash.size() << endl;
 	if(hash.empty()) {
-		cout << "Empty after []." << endl;
+		cout << "Empty after [] 2." << endl;
 		return 2;
 	}
 	if(hash.size()!=1) {
