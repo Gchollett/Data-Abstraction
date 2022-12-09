@@ -1,0 +1,18 @@
+Users
+userid,username,profilepic
+1,Garrett,SwagPic.png
+2,Melina,GoofyPic.png
+3,Bennett,WackyPic.png
+4,Dennis,CoolPic.png
+
+Posts
+postid,title,attachment,likecount,timestmp,userid
+1,Stanky Leg,MeHittingIt.png,489,Fri Dec 09 2022 14:19:45 GMT-0600 (Central Standard Time),1
+2,Selfie,Me.png,2,Fri Dec 09 2022 14:19:45 GMT-0600 (Central Standard Time),2
+3,MENACE,DENNISTHEMENACE.png,200,Fri Dec 09 2022 14:19:45 GMT-0600 (Central Standard Time),4
+
+Comments
+commentid,ctext,userid,postid
+1,That is one stanky leg!,2,1
+2,*Fire Emoji*,1,2
+3,MENACING,3,3

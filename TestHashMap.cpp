@@ -130,8 +130,6 @@ int doTests() {
 		return 2;
 	}
 	hash[16] = "six-teen";
-	cout << hash[16] << endl;
-	cout << hash.size() << endl;
 	if(hash.empty()) {
 		cout << "Empty after [] 2." << endl;
 		return 2;

@@ -1,0 +1,10 @@
+INSERT INTO Users(username,profilepic) values ('Garrett','SwagPic.png');
+INSERT INTO Users(username,profilepic) values ('Melina','GoofyPic.png');
+INSERT INTO Users(username,profilepic) values ('Bennett','WackyPic.png');
+INSERT INTO Users(username,profilepic) values ('Dennis','CoolPic.png');
+INSERT INTO Post(title,attachment,likecount,userid) values ('Stanky Leg','MeHittingIt.png',489,1);
+INSERT INTO Post(title,attachment,likecount,userid) values ('Selfie','Me.png',2,2);
+INSERT INTO Post(title,attachment,likecount,userid) values ('MENACE','DENNISTHEMENACE.png',200,4);
+INSERT INTO Comment(ctext,userid,postid) values ('That is one stanky leg!',2,1);
+INSERT INTO Comment(ctext,userid,postid) values ('*Fire Emoji*',1,2);
+INSERT INTO Comment(ctext,userid,postid) values ('MENACING',3,3);
